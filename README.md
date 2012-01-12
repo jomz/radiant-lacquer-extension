@@ -1,7 +1,5 @@
 # Radiant Lacquer Extension
 
-[![Build Status](https://secure.travis-ci.org/radiant/radiant-clipped-extension.png)](http://travis-ci.org/radiant/radiant-clipped-extension)
-
 Lacquer support for Radiant CMS.
 
 The Lacquer extension uses the [Lacquer gem][lacquer] to send purge commands to Varnish. As Lacquer requires Ruby 1.9, so does this extension.
