@@ -45,25 +45,19 @@ sub vcl_recv {
     }
   }
 
-  if (<%= Lacquer.cache_control.to_vcl_conditions %>) {    
-      # Clear cookie and authorization headers, set grace time, lookup in the cache
-      unset req.http.Cookie;
-      unset req.http.Authorization;
-      return(lookup);
-    }
-    if (req.url ~ "/admin") {
-      # Pass to Radiant
-      return (pass);
-    }
-    # Remove any Google Analytics based cookies
-    set req.http.Cookie = regsuball(req.http.Cookie, "__utm.=[^;]+(; )?", "");
-    if (req.url ~ "\.(css|ico|pdf|jpg|png|js|ttf)$") {
-      unset req.http.cookie;
-      return (lookup);
-    }
-    unset req.http.Cookie;
-    unset req.http.Authorization;
-    return(lookup);
+  if (req.url ~ "/admin") {
+    # Pass to Radiant
+    return (pass);
+  }
+  # Remove any Google Analytics based cookies
+  set req.http.Cookie = regsuball(req.http.Cookie, "__utm.=[^;]+(; )?", "");
+  if (req.url ~ "\.(css|ico|pdf|jpg|png|js|ttf)$") {
+    unset req.http.cookie;
+    return (lookup);
+  }
+  unset req.http.Cookie;
+  unset req.http.Authorization;
+  return(lookup);
   
 }
 
