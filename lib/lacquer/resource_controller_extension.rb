@@ -5,7 +5,7 @@ module Lacquer::ResourceControllerExtension
       
       def clear_model_cache_with_lacquer
         if model_name == 'Page'
-          if action_name =~ /create|update/ && model.published?
+          if model.published_at != nil && model.published?
             purge_page_and_ancestors(model)
           end
         else
