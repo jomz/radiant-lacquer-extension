@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = RadiantLacquerExtension::SUMMARY
   s.description = RadiantLacquerExtension::DESCRIPTION
 
-  s.add_dependency "lacquer", "~> 0.5.5"
+  s.add_dependency "lacquer", "= 0.5.5"
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.1")
 
   ignores = if File.exist?('.gitignore')
