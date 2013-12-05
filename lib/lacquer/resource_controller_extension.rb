@@ -1,7 +1,7 @@
 module Lacquer::ResourceControllerExtension
   def self.included(clazz)
     clazz.class_eval do
-      include Lacquer::CacheUtils
+      require 'lacquer'
       
       def clear_model_cache_with_lacquer
         if model_name == 'Page'
